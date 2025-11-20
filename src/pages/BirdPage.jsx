@@ -27,6 +27,8 @@ function BirdPage() {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
+      {audioFile && <div className="background-gradient"></div>}
+      
       <h1 className="title">My Music Maker Bird</h1>
 
       <div className="left-menu">
