@@ -1,12 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
-import BgmSelect from './pages/BgmSelect';
-import MusicPlayer from './pages/MusicPlayer';
+import MainPage from './pages/MainPage';
+import RainPage from './pages/RainPage';
+import BirdPage from './pages/BirdPage';
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<BgmSelect />} />
-      <Route path='/musicPlayer' element={<MusicPlayer />} />
+      <Route path='/' element={<MainPage />} />
+      <Route path='/RainPage' element={<RainPage />} />
+      <Route path='/BirdPage' element={<BirdPage />} />
     </Routes>
   )
 }
