@@ -1,14 +1,21 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PlayerBar from "../components/PlayerBar";
 
 function BirdPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const audioRef = useRef(null);
+  const birdRef = useRef(null);
+  const musicRef = useRef(null);
+
   const [audioFile, setAudioFile] = useState(null);
 
+  useEffect(() => {
+    birdRef.current.src = '/bird.mp3';
+    birdRef.current.loop = true;
+  }, [])
+  
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
@@ -16,7 +23,7 @@ function BirdPage() {
     if (file && file.type.startsWith("audio/")) {
       setAudioFile(file);
       const audioURL = URL.createObjectURL(file);
-      audioRef.current.src = audioURL;
+      musicRef.current.src = audioURL;
     }
   };
 
@@ -41,10 +48,12 @@ function BirdPage() {
         onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
 
-      <PlayerBar audioRef={audioRef} audioFile={audioFile} />
+      <PlayerBar 
+        natureRef={birdRef}
+        musicRef={musicRef} 
+      />
     </div>
   )
-
 }
 
 export default BirdPage;

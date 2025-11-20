@@ -1,13 +1,20 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PlayerBar from "../components/PlayerBar";
 
 function RainPage() {
   const navigate = useNavigate();
     const location = useLocation();
+    
+    const rainRef = useRef(null);
+    const musicRef = useRef(null);
 
-  const audioRef = useRef(null);
   const [audioFile, setAudioFile] = useState(null);
+
+  useEffect(() => {
+    rainRef.current.src = '/rain.mp3';
+    rainRef.current.loop = true;
+  }, [])
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -16,7 +23,7 @@ function RainPage() {
     if (file && file.type.startsWith("audio/")) {
       setAudioFile(file);
       const audioURL = URL.createObjectURL(file);
-      audioRef.current.src = audioURL;
+      musicRef.current.src = audioURL;
     }
   };
 
@@ -41,7 +48,10 @@ function RainPage() {
         onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
 
-      <PlayerBar audioRef={audioRef} audioFile={audioFile} />
+      <PlayerBar 
+        natureRef={rainRef} 
+        musicRef={musicRef} 
+      />
     </div>
   )
 }

@@ -2,26 +2,30 @@ import { useState } from "react";
 import { FiPlay, FiPause, FiSkipBack, FiSkipForward } from "react-icons/fi";
 import "../PlayerBar.css"
 
-function PlayerBar({ audioRef }) {
+function PlayerBar({ natureRef, musicRef }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const handlePlayClick = () => {
-    if (!audioRef.current?.src) return;
+    if (!musicRef.current?.src) return;
 
     if (isPlaying) {
-      audioRef.current.pause();
+      musicRef.current.pause();
+      if(natureRef)
+        natureRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play();
+      musicRef.current.play();
+      if (natureRef)
+        natureRef.current.play();
       setIsPlaying(true);
     }
   };
 
   // 음악 진행바 업데이트 함수
   const updateProgress = () => {
-    const current = audioRef.current.currentTime;
-    const total = audioRef.current.duration;
+    const current = musicRef.current.currentTime;
+    const total = musicRef.current.duration;
 
     if (total > 0) {
       setProgress((current / total) * 100);
@@ -34,16 +38,19 @@ function PlayerBar({ audioRef }) {
     const clickX = e.clientX - rect.left;
     const width = rect.width;
 
-    const total = audioRef.current.duration;
+    const total = musicRef.current.duration;
     const newTime = (clickX / width) * total;
 
-    audioRef.current.currentTime = newTime;
+    musicRef.current.currentTime = newTime;
   };
 
   return (
     <div className="player-container">
+      {/* 비 소리 오디오 */}
+      <audio ref={natureRef} />
+      {/* 사용자 음악 오디오 */}
       <audio 
-        ref={audioRef} 
+        ref={musicRef} 
         onTimeUpdate={updateProgress}
         onEnded={() => setIsPlaying(false)}
         />

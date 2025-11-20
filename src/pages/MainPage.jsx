@@ -6,7 +6,7 @@ function MainPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const audioRef = useRef(null);
+  const musicRef = useRef(null);
   const [audioFile, setAudioFile] = useState(null);
 
   const handleDrop = (e) => {
@@ -16,7 +16,7 @@ function MainPage() {
     if (file && file.type.startsWith("audio/")) {
       setAudioFile(file);
       const audioURL = URL.createObjectURL(file);
-      audioRef.current.src = audioURL;
+      musicRef.current.src = audioURL;
     }
   };
 
@@ -41,7 +41,10 @@ function MainPage() {
         onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
 
-      <PlayerBar audioRef={audioRef} audioFile={audioFile} />
+      <PlayerBar 
+        natureRef={null} 
+        musicRef={musicRef} 
+      />
     </div>
   )
 }
