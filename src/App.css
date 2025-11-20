@@ -61,6 +61,10 @@ body {
   background: #00000033; /* 업로드한 이미지처럼 연한 회색 */
 }
 
+.sound-btn.active {
+  background: #00000033;
+}
+
 /* 플레이어바 전체 스타일 */
 .player-container {
   position: absolute;

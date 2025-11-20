@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
 import PlayerBar from "../components/PlayerBar";
 
 function MainPage() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const audioRef = useRef(null);
   const [audioFile, setAudioFile] = useState(null);
@@ -32,9 +33,12 @@ function MainPage() {
       <h1 className="title">My Music Maker</h1>
 
       <div className="left-menu">
-        <button className="sound-btn" onClick={() => navigate("/")}>none</button>
-        <button className="sound-btn" onClick={() => navigate("/RainPage")}>rain</button>
-        <button className="sound-btn" onClick={() => navigate("/BirdPage")}>bird</button>
+        <button className={`sound-btn ${location.pathname === "/" ? "active" :  ""}`} 
+        onClick={() => navigate("/")}>none</button>
+        <button className={`sound-btn ${location.pathname === "/RainPage" ? "active" :  ""}`} 
+        onClick={() => navigate("/RainPage")}>rain</button>
+        <button className={`sound-btn ${location.pathname === "/BirdPage" ? "active" :  ""}`} 
+        onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
 
       <PlayerBar audioRef={audioRef} audioFile={audioFile} />
