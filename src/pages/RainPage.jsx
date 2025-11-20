@@ -37,7 +37,7 @@ function RainPage() {
     >
       {audioFile && <div className="background-gradient"></div>}
 
-      <h1 className="title">My Music Maker Rain</h1>
+      <h1 className="title">My Music Maker</h1>
 
       <div className="left-menu">
         <button className={`sound-btn ${location.pathname === "/" ? "active" :  ""}`} 
