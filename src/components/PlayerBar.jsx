@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiPlay, FiPause, FiSkipBack, FiSkipForward } from "react-icons/fi";
+import VolumeControl from "./VolumeControl";
 import "../PlayerBar.css"
 
 function PlayerBar({ natureRef, musicRef }) {
@@ -78,6 +79,8 @@ function PlayerBar({ natureRef, musicRef }) {
         <button className="player-btn">
           <FiSkipForward size={30} />
         </button>
+
+        <VolumeControl natureRef={natureRef} musicRef={musicRef} />
       </div>
     </div>
   );

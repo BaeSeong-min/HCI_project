@@ -1,0 +1,55 @@
+/* 볼륨 패널 */
+.volume-panel {
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.25s forwards;
+}
+
+.volume-panel.closing {
+  animation: fadeOutDown 0.25s forwards;
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* 라벨과 슬라이더 줄 */
+.volume-line {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #989898;
+  font-size: 14px;
+}
+
+.volume-line input[type="range"] {
+  width: 150px;
+  height: 4px;
+  border-radius: 4px;
+}
