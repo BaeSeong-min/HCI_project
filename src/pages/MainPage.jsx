@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PlayerBar from "../components/PlayerBar";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ function MainPage() {
         <button className="sound-btn" onClick={() => navigate("/RainPage")}>rain</button>
         <button className="sound-btn" onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
+
+      <PlayerBar />
     </div>
   )
 }
