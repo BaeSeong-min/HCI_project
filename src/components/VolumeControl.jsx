@@ -44,7 +44,7 @@ function VolumeControl({ natureRef, musicRef }) {
           {/* 자연음이 있는 페이지에서만 표시 */}
           {natureRef && (
             <div className="volume-line">
-              <span>Nature</span>
+              <span>Background</span>
               <input 
                 type="range" 
                 min="0" max="1" step="0.01"
