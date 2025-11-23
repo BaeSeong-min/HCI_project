@@ -8,6 +8,7 @@
 
 body {
   font-family: "HelveticaNeueRoman", sans-serif;
+  margin: 0;
 }
 
 /* 전체 페이지 레이아웃 */
@@ -15,7 +16,6 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  background: #f8f8f8;
 }
 
 /* 제목 텍스트 */

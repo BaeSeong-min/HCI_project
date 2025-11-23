@@ -1,0 +1,95 @@
+
+body.dark {
+    background-color: #121212; 
+    color: #e0e0e0; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+}
+
+
+body, body.light {
+    background-color: #ffffff; 
+    color: #333333; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+}
+
+body.dark .container {
+    background: #121212; 
+    color: #e0e0e0;
+}
+
+body.dark .title {
+    color: #b0b0b0; 
+}
+
+
+body.dark .sound-btn {
+    color: #a0a0a0; 
+}
+
+
+body.dark .sound-btn:hover,
+body.dark .sound-btn.active {
+    background: #ffffff33; 
+}
+
+body.dark .player-container {
+    background-color: #1f1f1f; 
+}
+
+
+body.dark .player-btn {
+    color: #e0e0e0; 
+}
+
+body.dark .player-btn:hover {
+    opacity: 0.7;
+}
+
+
+body.dark .progress-container {
+    background: #333333;
+}
+
+body.dark .progress-bar {
+    background: #777777;
+}
+
+
+body.dark .volume-panel {
+    background: rgba(31, 31, 31, 0.7); 
+    color: #c0c0c0; 
+}
+
+body.dark .volume-line span {
+    color: #989898;
+}
+
+
+.theme-button {
+    position: absolute;
+    top: 50px; 
+    right: 50px;
+    padding: 8px; 
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    line-height: 1; 
+    z-index: 1000; 
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+body.light .theme-button {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+
+body.dark .theme-button {
+    background-color: #333333;
+    color: #e0e0e0;
+}
+
+.theme-button:hover {
+    opacity: 0.8;
+}
