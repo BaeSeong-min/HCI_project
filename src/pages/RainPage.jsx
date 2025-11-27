@@ -35,6 +35,15 @@ function RainPage() {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
+      <video
+        className="bg-video"
+        src="/rain.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
       {audioFile && <div className="background-gradient"></div>}
 
       <h1 className="title">My Music Maker</h1>
