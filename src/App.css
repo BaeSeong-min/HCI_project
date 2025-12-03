@@ -10,6 +10,11 @@ body {
   font-family: "HelveticaNeueRoman", sans-serif;
 }
 
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
 /* 전체 페이지 레이아웃 */
 .container {
   width: 100vw;
@@ -125,30 +130,6 @@ body {
   color: #606060;
 }
 
-/* 음악 업로드 시 배경 그라데이션 효과 */
-.background-gradient {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 70vw;
-  height: 70vw;
-
-  background: radial-gradient(
-    circle,
-    rgba(77, 170, 255, 0.45) 0%,   
-    rgba(30, 136, 229, 0.30) 35%,  
-    rgba(25, 118, 210, 0.20) 55%,  
-    rgba(13, 71, 161, 0.10) 75%,
-    transparent 100%
-  );
-
-  filter: blur(50px);
-  z-index: 0;
-  pointer-events: none;
-}
-
 /* rain 페이지 배경 */
 .bg-video {
   position: fixed;
@@ -159,4 +140,45 @@ body {
   object-fit: cover;   /* 영상이 꽉 차도록 */
   z-index: -1;         /* 뒤로 보내기 */
   pointer-events: none; /* 드래그/클릭 방해 방지 */
+}
+
+/* 비 배경 토글 버튼 */
+.toggle-video-btn {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  /* 유리 느낌 */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* 텍스트(아이콘) 스타일 */
+  font-size: 26px;
+  color: #fff;
+  
+  /* 애니메이션 */
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-video-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.toggle-video-btn:active {
+  transform: scale(0.94);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }

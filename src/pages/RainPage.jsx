@@ -4,12 +4,12 @@ import PlayerBar from "../components/PlayerBar";
 
 function RainPage() {
   const navigate = useNavigate();
-    const location = useLocation();
+  const location = useLocation();
     
-    const rainRef = useRef(null);
-    const musicRef = useRef(null);
+  const rainRef = useRef(null);
+  const musicRef = useRef(null);
 
-  const [audioFile, setAudioFile] = useState(null);
+  const [showVideo, setShowVideo] = useState(true);
 
   useEffect(() => {
     rainRef.current.src = '/rain.mp3';
@@ -21,7 +21,6 @@ function RainPage() {
     const file = e.dataTransfer.files[0];
 
     if (file && file.type.startsWith("audio/")) {
-      setAudioFile(file);
       const audioURL = URL.createObjectURL(file);
       musicRef.current.src = audioURL;
     }
@@ -35,16 +34,22 @@ function RainPage() {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <video
-        className="bg-video"
-        src="/rain.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-
-      {audioFile && <div className="background-gradient"></div>}
+      <button
+       className="toggle-video-btn"
+       onClick={() => setShowVideo(prev => !prev)}>
+        {showVideo ? "🌨️" : "🌧️"}  
+      </button>
+      
+      {showVideo && (
+        <video
+          className="bg-video"
+          src="/rain.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        /> 
+      )}
 
       <h1 className="title">My Music Maker</h1>
 
@@ -53,8 +58,6 @@ function RainPage() {
         onClick={() => navigate("/")}>none</button>
         <button className={`sound-btn ${location.pathname === "/RainPage" ? "active" :  ""}`} 
         onClick={() => navigate("/RainPage")}>rain</button>
-        <button className={`sound-btn ${location.pathname === "/BirdPage" ? "active" :  ""}`} 
-        onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
 
       <PlayerBar 

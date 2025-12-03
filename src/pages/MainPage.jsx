@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import PlayerBar from "../components/PlayerBar";
 
 function MainPage() {
@@ -7,14 +7,12 @@ function MainPage() {
   const location = useLocation();
 
   const musicRef = useRef(null);
-  const [audioFile, setAudioFile] = useState(null);
 
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
 
     if (file && file.type.startsWith("audio/")) {
-      setAudioFile(file);
       const audioURL = URL.createObjectURL(file);
       musicRef.current.src = audioURL;
     }
@@ -28,7 +26,6 @@ function MainPage() {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      {audioFile && <div className="background-gradient"></div>}
 
       <h1 className="title">My Music Maker</h1>
 
@@ -37,8 +34,6 @@ function MainPage() {
         onClick={() => navigate("/")}>none</button>
         <button className={`sound-btn ${location.pathname === "/RainPage" ? "active" :  ""}`} 
         onClick={() => navigate("/RainPage")}>rain</button>
-        <button className={`sound-btn ${location.pathname === "/BirdPage" ? "active" :  ""}`} 
-        onClick={() => navigate("/BirdPage")}>bird</button>
       </div>
 
       <PlayerBar 
